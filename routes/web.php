@@ -22,6 +22,9 @@ Route::post('register', 'Auth\RegisterController@register')->name('auth.register
 
 Route::group(['middleware' => ['auth', 'approved'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/home', 'HomeController@index');
+    Route::get('/reports/income', 'Admin\ReportsController@income');
+    Route::get('/reports/expenses', 'Admin\ReportsController@expenses');
+
     
     Route::resource('tasks', 'Admin\TasksController');
     Route::post('tasks_mass_destroy', ['uses' => 'Admin\TasksController@massDestroy', 'as' => 'tasks.mass_destroy']);
@@ -37,9 +40,6 @@ Route::group(['middleware' => ['auth', 'approved'], 'prefix' => 'admin', 'as' =>
     Route::post('users_mass_destroy', ['uses' => 'Admin\UsersController@massDestroy', 'as' => 'users.mass_destroy']);
     Route::resource('task_calendars', 'Admin\TaskCalendarsController');
     Route::resource('user_actions', 'Admin\UserActionsController');
-    Route::get('internal_notifications/read', 'Admin\InternalNotificationsController@read');
-    Route::resource('internal_notifications', 'Admin\InternalNotificationsController');
-    Route::post('internal_notifications_mass_destroy', ['uses' => 'Admin\InternalNotificationsController@massDestroy', 'as' => 'internal_notifications.mass_destroy']);
     Route::resource('content_categories', 'Admin\ContentCategoriesController');
     Route::post('content_categories_mass_destroy', ['uses' => 'Admin\ContentCategoriesController@massDestroy', 'as' => 'content_categories.mass_destroy']);
     Route::resource('content_tags', 'Admin\ContentTagsController');
@@ -55,6 +55,8 @@ Route::group(['middleware' => ['auth', 'approved'], 'prefix' => 'admin', 'as' =>
     Route::resource('expenses', 'Admin\ExpensesController');
     Route::post('expenses_mass_destroy', ['uses' => 'Admin\ExpensesController@massDestroy', 'as' => 'expenses.mass_destroy']);
     Route::resource('monthly_reports', 'Admin\MonthlyReportsController');
+    Route::resource('teams', 'Admin\TeamsController');
+    Route::post('teams_mass_destroy', ['uses' => 'Admin\TeamsController@massDestroy', 'as' => 'teams.mass_destroy']);
 
     Route::model('messenger', 'App\MessengerTopic');
     Route::get('messenger/inbox', 'Admin\MessengerController@inbox')->name('messenger.inbox');
