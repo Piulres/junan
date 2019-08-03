@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCombined1564810925InternalNotificationsTable extends Migration
+class Drop5d45f7afdcde4InternalNotificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -11,6 +11,16 @@ class CreateCombined1564810925InternalNotificationsTable extends Migration
      * @return void
      */
     public function up()
+    {
+        Schema::dropIfExists('internal_notifications');
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
     {
         if(! Schema::hasTable('internal_notifications')) {
             Schema::create('internal_notifications', function (Blueprint $table) {
@@ -22,15 +32,5 @@ class CreateCombined1564810925InternalNotificationsTable extends Migration
                 
             });
         }
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('internal_notifications');
     }
 }

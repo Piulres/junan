@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Add5d45939e60193RelationshipsToTaskTable extends Migration
+class Add5d45f7b74378eRelationshipsToTaskTable extends Migration
 {
     /**
      * Run the migrations.
@@ -33,16 +33,6 @@ class Add5d45939e60193RelationshipsToTaskTable extends Migration
     public function down()
     {
         Schema::table('tasks', function(Blueprint $table) {
-            if(Schema::hasColumn('tasks', 'status_id')) {
-                $table->dropForeign('330739_5d4520998df77');
-                $table->dropIndex('330739_5d4520998df77');
-                $table->dropColumn('status_id');
-            }
-            if(Schema::hasColumn('tasks', 'user_id')) {
-                $table->dropForeign('330739_5d452099af221');
-                $table->dropIndex('330739_5d452099af221');
-                $table->dropColumn('user_id');
-            }
             
         });
     }

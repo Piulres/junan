@@ -58,6 +58,14 @@
                         </a>
                     </li>@endcan
                     
+                    @can('team_access')
+                    <li>
+                        <a href="{{ route('admin.teams.index') }}">
+                            <i class="fa fa-users"></i>
+                            <span>@lang('global.teams.title')</span>
+                        </a>
+                    </li>@endcan
+                    
                 </ul>
             </li>@endcan
             
@@ -197,7 +205,28 @@
             </li>@endcan
             
 
-            
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-line-chart"></i>
+                    <span class="title">Generated Reports</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                   <li class="{{ $request->is('/reports/income') }}">
+                        <a href="{{ url('/admin/reports/income') }}">
+                            <i class="fa fa-line-chart"></i>
+                            <span class="title">Income</span>
+                        </a>
+                    </li>   <li class="{{ $request->is('/reports/expenses') }}">
+                        <a href="{{ url('/admin/reports/expenses') }}">
+                            <i class="fa fa-line-chart"></i>
+                            <span class="title">Expenses</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
             
             @php ($unread = App\MessengerTopic::countUnread())

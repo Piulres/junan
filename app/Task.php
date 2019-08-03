@@ -27,6 +27,8 @@ class Task extends Model
         parent::boot();
 
         Task::observe(new \App\Observers\UserActionsObserver);
+
+        Task::observe(new \App\Observers\TaskCrudActionObserver);
     }
 
     /**
