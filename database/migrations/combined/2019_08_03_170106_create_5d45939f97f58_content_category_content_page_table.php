@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Create5d4520f6effdeContentCategoryContentPageTable extends Migration
+class Create5d45939f97f58ContentCategoryContentPageTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,9 +15,9 @@ class Create5d4520f6effdeContentCategoryContentPageTable extends Migration
         if(! Schema::hasTable('content_category_content_page')) {
             Schema::create('content_category_content_page', function (Blueprint $table) {
                 $table->integer('content_category_id')->unsigned()->nullable();
-                $table->foreign('content_category_id', 'fk_p_330733_330735_conten_5d4520f6f00ed')->references('id')->on('content_categories')->onDelete('cascade');
+                $table->foreign('content_category_id', 'fk_p_330733_330735_conten_5d45939f98174')->references('id')->on('content_categories')->onDelete('cascade');
                 $table->integer('content_page_id')->unsigned()->nullable();
-                $table->foreign('content_page_id', 'fk_p_330735_330733_conten_5d4520f6f01a8')->references('id')->on('content_pages')->onDelete('cascade');
+                $table->foreign('content_page_id', 'fk_p_330735_330733_conten_5d45939f98273')->references('id')->on('content_pages')->onDelete('cascade');
                 
             });
         }
